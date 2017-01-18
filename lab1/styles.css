@@ -1,0 +1,67 @@
+/*START favorites.html styles here*/
+body{
+  font-family: Arial, sans-serif;
+  background-color: #B7B7B7;
+}
+p{
+	font-family: 'Roboto';
+}
+ul.favFoodItemCont{
+  margin-top:2px;
+}
+ul.puppies li,ul.puppies li a img{
+  max-width: 200px;
+  display: inline;
+}
+span#movie{
+	font-style: italic;
+}
+span#band{
+	font-weight: bold;
+}
+.sect-header{
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 10px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+#movie a,#band a{
+	text-decoration: none;
+	/*font-weight: bold;*/
+	color: #ff4c00;
+}
+#movie a:hover,#band a:hover{
+	font-weight: bold;
+	color: #5e5e5e;
+}
+.favItem{
+	background-color: #e3e3e3;
+	margin:1%;
+	padding:5px;
+}
+table{
+	background-color: white;
+}
+thead{
+	background-color: red;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+td{
+	padding:5px;
+}
+#favFoodItem{
+	text-transform: uppercase;
+	font-size: 1em;
+	color: blue;
+
+}
+#favFoodItem:after{
+	content:" !!!";
+}
+
+
+/*END favorites.html styles here*/
