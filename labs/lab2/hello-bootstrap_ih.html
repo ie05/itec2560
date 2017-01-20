@@ -1,0 +1,190 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Bootstrap Page</title>
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<style>
+  .container-fluid{
+    margin:20px;
+  }
+  .jumbotron{
+    text-shadow: 1px 1px 1px white;
+    text-align: center;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    background-image: url('5ahTckK.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    min-height: 250px;
+  }
+  .glyphicon-headphones{
+    font-size: 40px;
+  }
+  .btn-primary{
+    min-width: 214px;
+  }
+  .pom-pom{
+    max-width: 250px;
+    display: block;
+  }
+  .dropdown{
+    margin-top:20px;
+  }
+  footer{
+    height: 250px;
+  }
+
+  [role~=tabpanel]{
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+  .dropdown-menu>li>div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+  }
+  .dropdown-menu>li>div:hover{
+    cursor: pointer;
+  }
+  .row{
+    max-width: 900px;
+    width: 100%;
+    margin:0 auto;
+    background-color: #F6F4F4;
+    padding: 3%;
+    border-radius: 5px;
+    min-height: 224px;
+    margin-top: 20px;
+  }
+  .cl2{
+    position: relative;
+    top: 50%;
+    transform: translateY(35%);
+  }
+@media screen and (max-width: 770px) {
+  .col-sm-6{
+    margin-top:20px;
+  }
+  .cl2{
+    position: initial;
+    top: 0;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+  <div class="jumbotron">
+    <h1>My first bootstrap page</h1><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+  </div>
+
+  <h1>Welcome to Pom Pom, The Pavlovian Dog</h1>
+   <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#pom-tab" aria-controls="pom-tab" role="tab" data-toggle="tab">Pom Pom</a></li>
+    <li role="presentation"><a href="#zom-dog"  aria-controls="zom-dog" role="tab" data-toggle="tab">Don't Look</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="pom-tab">
+      Pom Pom is a dog who does tricks. He also takes instructions very well. Tell him what to do, then click 'Action Pom Pom' Button.
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="zom-dog">
+      <h2>Ahhh! Zombie dog!</h2>
+      <img src="maxresdefault.jpg" alt="zombie-dog" width="100%">
+    </div>
+  </div>
+
+   <p>Glyphs provided by Bootstrap:<br>
+            <a href="http://getbootstrap.com/components/" target="_blank">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"> See More Glyphs</span></a></p>
+  <div class="row">    <!--first row -->
+      <div class="col-sm-6">
+            <img class="img-rounded pom-pom" src="download.jpg" alt="pom pom">
+      </div> <!-- end col 1 -->
+      <div class="col-sm-6 cl2">
+        <button type="button" class="btn btn-primary">Action Pom Pom!</button>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="animaldropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+
+              Select what Pom Pom Does      <!--The dropdown menu text -->
+              <span class="caret"></span>   <!-- Add this for the down arrow icon -->
+
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="animaldropdown">
+              <li><div id="shake" href="">Dance</div></li>
+              <li><div id="bounce" href="">Jump</div></li>
+              <li><div id="explode" href="">Destroy</div></li>
+              <li><div id="revive" href="">Revive</div></li>
+            </ul>
+          </div>
+      </div> <!-- end col 2 -->
+  </div> <!-- end row -->
+  <footer>
+    
+  </footer>
+</body>
+<script>
+$( document ).ready(function() {
+    
+    // set action global
+    var pomAction = ''; 
+    
+    $( '.btn-primary').click(function() {
+      
+      // if no action, alert user, else execute pomAction
+      !pomAction ? alert('Please select an action for Pom Pom') : pomAction();
+  
+    });
+    
+    // define shake function
+    $('#shake').click(function(){
+       pomAction = function(){
+          $('.pom-pom').effect( 'shake' );
+        }
+    });
+
+    // define bounce function
+    $('#bounce').click(function(){
+        pomAction = function(){
+          $('.pom-pom').effect( 'bounce' );
+        }
+    });
+
+    // define explode function
+    $('#explode').click(function(){
+        pomAction = function(){
+          $('.pom-pom').hide( "explode", {pieces: 9 });
+        }
+    });
+
+    // define revive function
+    $('#revive').click(function(){
+       pomAction = function(){
+          $('.pom-pom').show( "explode", {pieces: 9});
+        }
+    });
+
+});
+
+</script>
+</html>
+
+
+
