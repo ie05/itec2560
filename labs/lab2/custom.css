@@ -1,0 +1,77 @@
+  .container-fluid{
+    margin:20px;
+  }
+  .jumbotron{
+    text-shadow: 1px 1px 1px white;
+    text-align: center;
+    font-family: "Roboto";
+    text-transform: uppercase;
+    background-image: url('5ahTckK.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    min-height: 250px;
+  }
+  .glyphicon-headphones{
+    font-size: 40px;
+  }
+  .btn-primary{
+    min-width: 214px;
+  }
+  .pom-pom{
+    max-width: 250px;
+    display: block;
+  }
+  .dropdown{
+    margin-top:20px;
+  }
+  footer{
+    height: 250px;
+  }
+
+  [role~=tabpanel]{
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+  .dropdown-menu>li>div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+  }
+  .dropdown-menu>li>div:hover{
+    cursor: pointer;
+  }
+  .row{
+    max-width: 900px;
+    width: 100%;
+    margin:0 auto;
+    background-color: #F6F4F4;
+    padding: 3%;
+    border-radius: 5px;
+    min-height: 224px;
+    margin-top: 20px;
+  }
+  .cl2{
+    position: relative;
+    top: 50%;
+    transform: translateY(35%);
+  }
+  pre{
+    color: red;
+  }
+
+/*    begin mobile css*/
+@media screen and (max-width: 770px) {
+  .col-sm-6{
+    margin-top:20px;
+  }
+  .cl2{
+    position: initial;
+    top: 0;
+    transform: none;
+  }
+}

@@ -7,83 +7,14 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="custom.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<style>
-  .container-fluid{
-    margin:20px;
-  }
-  .jumbotron{
-    text-shadow: 1px 1px 1px white;
-    text-align: center;
-    font-family: "Roboto";
-    text-transform: uppercase;
-    background-image: url('5ahTckK.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    min-height: 250px;
-  }
-  .glyphicon-headphones{
-    font-size: 40px;
-  }
-  .btn-primary{
-    min-width: 214px;
-  }
-  .pom-pom{
-    max-width: 250px;
-    display: block;
-  }
-  .dropdown{
-    margin-top:20px;
-  }
-  footer{
-    height: 250px;
-  }
+  <link rel="stylesheet" href="https//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+  <script src="https//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
-  [role~=tabpanel]{
-    margin-top:20px;
-    margin-bottom: 20px;
-  }
-  .dropdown-menu>li>div {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-  }
-  .dropdown-menu>li>div:hover{
-    cursor: pointer;
-  }
-  .row{
-    max-width: 900px;
-    width: 100%;
-    margin:0 auto;
-    background-color: #F6F4F4;
-    padding: 3%;
-    border-radius: 5px;
-    min-height: 224px;
-    margin-top: 20px;
-  }
-  .cl2{
-    position: relative;
-    top: 50%;
-    transform: translateY(35%);
-  }
-@media screen and (max-width: 770px) {
-  .col-sm-6{
-    margin-top:20px;
-  }
-  .cl2{
-    position: initial;
-    top: 0;
-    transform: none;
-  }
-}
-</style>
 </head>
 
 <body>
@@ -97,6 +28,7 @@
    <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="#pom-tab" aria-controls="pom-tab" role="tab" data-toggle="tab">Pom Pom</a></li>
     <li role="presentation"><a href="#zom-dog"  aria-controls="zom-dog" role="tab" data-toggle="tab">Don't Look</a></li>
+    <li role="presentation"><a href="#pomCode"  aria-controls="pomCode" role="tab" data-toggle="tab">Pom's Code</a></li>
   </ul>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="pom-tab">
@@ -107,6 +39,58 @@
       <h2>Ahhh! Zombie dog!</h2>
       <img src="maxresdefault.jpg" alt="zombie-dog" width="100%">
     </div>
+
+    <div role="tabpanel" class="tab-pane" id="pomCode">
+      <h2>Below is the source code for Pom Pom's movement, he runs pretty much on Jquery</h2>
+
+      <pre>
+        <code>
+          $( document ).ready(function() {
+              
+              // set action global
+              var pomAction = ''; 
+              
+              $( '.btn-primary').click(function() {
+                
+                // if no action, alert user, else execute pomAction
+                !pomAction ? alert('Please select an action for Pom Pom') : pomAction();
+            
+              });
+              
+              // define shake function
+              $('#shake').click(function(){
+                 pomAction = function(){
+                    $('.pom-pom').effect( 'shake' );
+                  }
+              });
+
+              // define bounce function
+              $('#bounce').click(function(){
+                  pomAction = function(){
+                    $('.pom-pom').effect( 'bounce' );
+                  }
+              });
+
+              // define explode function
+              $('#explode').click(function(){
+                  pomAction = function(){
+                    $('.pom-pom').hide( "explode", {pieces: 9 });
+                  }
+              });
+
+              // define revive function
+              $('#revive').click(function(){
+                 pomAction = function(){
+                    $('.pom-pom').show( "explode", {pieces: 9});
+                  }
+              });
+
+          });
+        </code>
+      </pre>
+      
+    </div>
+
   </div>
 
    <p>Glyphs provided by Bootstrap:<br>
@@ -137,53 +121,9 @@
       </div> <!-- end col 2 -->
   </div> <!-- end row -->
   <footer>
-    
   </footer>
+  <script src="pomScript.js"></script>
 </body>
-<script>
-$( document ).ready(function() {
-    
-    // set action global
-    var pomAction = ''; 
-    
-    $( '.btn-primary').click(function() {
-      
-      // if no action, alert user, else execute pomAction
-      !pomAction ? alert('Please select an action for Pom Pom') : pomAction();
-  
-    });
-    
-    // define shake function
-    $('#shake').click(function(){
-       pomAction = function(){
-          $('.pom-pom').effect( 'shake' );
-        }
-    });
-
-    // define bounce function
-    $('#bounce').click(function(){
-        pomAction = function(){
-          $('.pom-pom').effect( 'bounce' );
-        }
-    });
-
-    // define explode function
-    $('#explode').click(function(){
-        pomAction = function(){
-          $('.pom-pom').hide( "explode", {pieces: 9 });
-        }
-    });
-
-    // define revive function
-    $('#revive').click(function(){
-       pomAction = function(){
-          $('.pom-pom').show( "explode", {pieces: 9});
-        }
-    });
-
-});
-
-</script>
 </html>
 
 
