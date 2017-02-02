@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Listeners in JavaScript</title>
+</head>
+
+<body>
+
+<p id="hello">Click here to say hello</p>
+
+<script>
+
+  //Older style of adding listeners. More universally recognized but can only add one
+  //listener to each element, so is more restrictive.
+
+  document.getElementById("hello").onclick = hello;
+
+  function hello() {
+    alert("Hello!");
+  }
+
+</script>
+
+</body>
+
+</html>

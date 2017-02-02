@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavsScript Functions with Arguments</title>
+</head>
+<body>
+
+
+<!--Can provide arguments to JavaScript functions when called from code
+The argument "this" sends this element as an argument - in this case, the
+button elements sends itself as an argument. -->
+
+<H1 >A list</H1>
+
+<!--Can use the same function to change other element's color too -->
+<P>Mouse over the list items to change their color</P>
+<ul id="my_list">
+  <li onmouseover="changeColor(this)">A list item</li>
+  <li onmouseover="changeColor(this)">Another list item</li>
+  <li onmouseover="changeColor(this)">Another list item</li>
+  <li onmouseover="changeColor(this)">Another list item</li>
+  <li onmouseover="changeColor(this)">Another list item</li>
+  <li onmouseover="changeColor(this)">Another list item</li>
+
+</ul>
+
+<script>
+
+  function changeColor(element) {
+
+    element.style.color = "red";
+
+  }
+
+</script>
+
+</body>
+</html>
+
+

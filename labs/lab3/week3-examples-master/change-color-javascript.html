@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Functions with Arguments</title>
+</head>
+
+<body>
+
+<P>Mouse over the list items to change their color</P>
+<ul id="my_list">
+  <li>A list item</li>
+  <li>Another list item</li>
+  <li>Another list item</li>
+  <li>Another list item</li>
+  <li>Another list item</li>
+  <li>Another list item</li>
+
+</ul>
+
+<script>
+
+  var list_items = document.getElementsByTagName('li');
+  for (var i = 0 ; i < list_items.length; i++) {
+      list_items[i].addEventListener('mouseover', changeColor);
+
+    //Alternative approach - define entire function inline
+    //    list_items[i].addEventListener('mouseover', function() {
+    //      this.style.color = 'red';
+    //    });
+
+  }
+
+  function changeColor() {
+    this.style.color = 'red';   // this refers to the thing that this function
+    // is called on. here, changeColor is called for a list element, so 'this'
+    // will be the list element
+  }
+
+</script>
+
+</body>
+</html>
+
+

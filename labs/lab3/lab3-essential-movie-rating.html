@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Rating</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+<body>
+<p>Star Wars, <span class="rating">4</span> stars</p>
+
+<p>Back to the Future, <span class="rating">5</span> stars</p>
+
+<p>The Matrix, <span class="rating">5</span> stars</p>
+
+</body>
+<script type="text/javascript">
+ function init(){
+ 	var ratings = document.getElementsByClassName('rating');
+ 	
+ 	function makeStars(num){
+ 		var star = "\u2605";
+ 		var starRating = '';
+ 		for (var j = 1; j <= num; j++) {
+ 		 starRating += star;
+ 		 // alert(starRating);
+ 		}
+ 		return starRating;
+ 	}
+
+ 	for (var i = 0; i < ratings.length; i++) {
+ 		starNum = parseInt(ratings[i].textContent);
+ 		rating = makeStars(starNum);
+ 		ratings[i].innerHTML = rating;
+
+ 	}
+ 	
+
+
+ } // end init();
+
+ window.addEventListener('load', init(), false);
+</script>
+</html>

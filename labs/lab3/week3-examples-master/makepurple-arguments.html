@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Make Purple</title>
+</head>
+
+<style>
+  h1 {
+    display: inline   /* Display the headers inline so they only take up their own width, not the whole page */
+  }
+</style>
+
+<body>
+
+<h1>My Web Page</h1>
+<p>Move the mouse over any header to change the text style.</p>
+<h1>Another header</h1>
+<p>Move the mouse away to restore the original the text style.</p>
+
+<script>
+
+  //This runs when the page loads.
+  var mouseOverColor = "purple";
+  var mouseLeftColor = "black";
+
+  //Get a list of all of the h1 elements.
+  var allHeaders = document.getElementsByTagName("h1");
+
+  //Add an mouseover listener to each H1, which calls the changeColor function with arguments
+  // This version, the changeColor function is wrapped in an anonymous function
+  // A bit of a hack to be able to send arguments to the desired function
+  // Similar for mouseout, but call same function with different arguments
+  for (var h = 0 ; h < allHeaders.length ; h++) {
+
+    allHeaders[h].addEventListener("mouseover", function() {
+      //Send a reference to the element the function is called for
+      changeColor(this, "purple", "oblique");
+    });
+
+    allHeaders[h].addEventListener("mouseout", function() {
+      changeColor(this, "black", "normal");
+    });
+
+    //This code doesn't work as expected. The changeColor method is called
+    //as soon as we set the listener, so the approach above is necessary.
+    //allHeaders[h].addEventListener("mouseout", changeColor("black", "oblique"));
+  }
+
+  //For every header, change the color and style.
+  //Now, only need one function since can send parameters
+  function changeColor(element, newColor, newStyle) {
+    element.style.color = newColor;
+    element.style.fontStyle = newStyle;
+  }
+
+</script>
+
+</body>
+
+</html>

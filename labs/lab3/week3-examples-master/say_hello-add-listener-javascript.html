@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Listeners in JavaScript</title>
+</head>
+
+<body>
+
+<p id="hello">Click here to say hello</p>
+<p id="bye">Click here to say goodbye</p>
+
+<script>
+
+  // All in one line - can define functions in lines of code
+  document.getElementById("hello").addEventListener('click', function() {
+    alert("hello!")
+  });
+
+  // More readable style - define function separately
+  document.getElementById("bye").addEventListener('click', bye);
+
+  function bye() {
+    alert("Goodbye, hope to see you again soon!");
+  }
+
+</script>
+
+</body>
+
+</html>

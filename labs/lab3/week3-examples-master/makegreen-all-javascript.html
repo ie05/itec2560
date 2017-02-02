@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Make Green</title>
+</head>
+<body>
+
+<h1>The paragraphs on this page should be green</h1>
+
+<p>I'm a paragraph.</p>
+<p>I'm also a paragraph.</p>
+
+<button id="green">Turn text green</button>
+
+
+  <script>
+
+    var green_button = document.getElementById("make_green");
+    green_button.addEventListener("click", green);
+
+    function green() {
+
+      // Get an array of all the P elements
+      var allPara = document.getElementsByTagName("p");
+
+      //Loop over the array, and set the style's color to green
+      for (var p = 0 ; p < allPara.length ; p++) {
+        allPara[p].style.color="green";
+      }
+    }
+
+
+  </script>
+
+</body>
+
+
+</html>

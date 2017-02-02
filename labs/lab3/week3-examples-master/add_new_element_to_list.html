@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List</title>
+</head>
+<body>
+
+<ul id="my_list">
+  <li>A list item</li>
+  <li>Another list item</li>
+</ul>
+
+<button onclick="addToList()">Add items to this list</button>
+
+<script>
+
+  var newItems = 1;
+
+  function addToList() {
+
+    var my_list_element = document.getElementById("my_list");
+
+    var new_list_item = document.createElement("li");
+    new_list_item.innerHTML = "New item " + newItems;
+    newItems++;
+
+    my_list_element.appendChild(new_list_item);
+
+  }
+
+</script>
+
+</body>
+</html>
+
+

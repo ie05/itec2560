@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Color Picker</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <link rel="stylesheet" type="text/css" href="styles3.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+<body>
+<div class="container">
+<div class="col-1">
+	<form action="">
+		<p>Red:<br>
+		<input id="red" type="text" name="reb"></p>
+		
+		<p>Green:<br>
+		<input id="green" type="text" name="green"></p>
+		
+		<p>Blue:<br>
+		<input id="blue" type="text" name="blue"></p>
+
+		<button id="saveColor">Generate Color Swatch</button>
+	</form>
+	<div id="swatchSample"><div>Click to Save Swatch</div></div>
+	<div style="width:180px;margin: 0 auto;"><button id="removeSwatchSample">Remove Last Swatch</button></div>
+</div>
+<div class="col-2">
+	<table id="table" border="1" cellpadding="5" cellspacing="1">
+			<th>HEX</th>
+			<th>Color Sample</th>
+			<tr style="background-color: #C6A3A3;">
+				<td>#e3e3e3</td>
+				<td>Example</td>
+			</tr>
+	</table>
+
+</div>
+
+</div> <!-- end container -->
+
+
+</body>
+<script type="text/javascript">
+// function init(){
+
+var swatch;
+ function getColor(elId1,elId2,elId3) {
+    var letters = '0123456789ABCDEF';
+    var color1 = '';
+    var color2 = '';
+    var color3 = '';
+    for (var i = 0; i < 2; i++ ) {
+        color1 += letters[Math.floor(Math.random() * 16)];
+        color2 += letters[Math.floor(Math.random() * 16)];
+    	color3 += letters[Math.floor(Math.random() * 16)];
+    }
+    swatch = '#' + color1 + color2 + color3;
+    document.getElementById(elId1).value = color1;
+    document.getElementById(elId2).value = color2;
+    document.getElementById(elId3).value = color3;
+    document.getElementById('swatchSample').style.backgroundColor = swatch;
+}
+function removeSwatch(){
+	var table = document.getElementById('table');
+	var lastChild = table.lastChild;
+	if (table.childElementCount > 1) {
+		table.removeChild(lastChild);	
+	}else{return;}
+
+}
+
+var saveSwatch = document.getElementById('swatchSample');
+var button = document.getElementById('saveColor');
+button.addEventListener('click', function(e){
+	e.preventDefault();
+	getColor('red','green','blue');
+}, false);
+
+document.getElementById('swatchSample').addEventListener('click',function(){
+	//generate tr
+	var tr = document.createElement("TR");
+
+	// create first td 
+	var td1 = document.createElement("TD");
+	td1.style.backgroundColor = swatch
+	var textNode = document.createTextNode(swatch);
+	td1.appendChild(textNode);
+	
+	var td2 = document.createElement("TD");
+	td2.style.backgroundColor = swatch
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	document.getElementById('table').appendChild(tr);
+},false);
+
+document.getElementById('removeSwatchSample').addEventListener('click', removeSwatch, false);
+
+ // } // end init();
+
+ // window.addEventListener('load', init(), false);
+</script>
+</html>

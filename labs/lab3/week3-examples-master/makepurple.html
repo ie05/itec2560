@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Make Purple</title>
+
+  <style>
+    h1 {
+      display: inline   /* Display the headers inline so they only take up their own width, not the whole page */
+    }
+  </style>
+
+</head>
+<body>
+
+<h1>My Web Page</h1>
+<p>Move the mouse over any header to change the text style.</p>
+<h1>Another header</h1>
+<p>Move the mouse away to restore the original the text style.</p>
+
+<script>
+
+  var mouseOverColor = "purple";
+  var mouseLeftColor = "black";
+
+  //Get a list of all of the h1 elements.
+  var allHeaders = document.getElementsByTagName("h1");
+
+  //Give each H1 a onmouseover listener which calls the changeColor function
+  //Same to add onmouseout, but call the revertColor function
+  for (var h = 0 ; h < allHeaders.length ; h++) {
+    allHeaders[h].addEventListener("mouseover", changeColor);
+    allHeaders[h].addEventListener("mouseout", revertColor);
+  }
+
+  // Change the color and text style for the element
+  function changeColor() {
+    this.style.color = mouseOverColor;
+    this.style.fontStyle = "oblique";
+  }
+
+  // Same as previous function, but restore original
+  function revertColor() {
+    this.style.color = mouseLeftColor;
+    this.style.fontStyle = "normal";
+  }
+
+</script>
+
+</body>
+
+</html>

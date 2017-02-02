@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Say Hello</title>
+</head>
+<style>
+  div {
+    height : 70px;
+    width : 130px;
+    background-color: greenyellow;
+    text-align: center;
+    margin : 20px;
+    padding : 30px;
+  }
+</style>
+
+<body>
+
+
+<button id="add_mouse_listeners">Add mouseover and mouseout listeners to the box below</button>
+<button id="add_click_listeners">Add click listener to the box below</button>
+
+<div id="box">
+  <p id="mouse_status"></p>
+</div>
+
+<button id="rem_click_listener">Remove click listeners box</button>
+<button id="rem_mouse_listeners">Remove mouse over/out listeners</button>
+<button id="rem_all_listeners">Remove all listeners</button>
+
+<script>
+
+  //References to div and text within div.
+  var box = document.getElementById("box");
+  var mouse_info = document.getElementById("mouse_status");
+
+  //References to buttons, and add click listeners to buttons
+  var add_mouse_listeners_button = document.getElementById("add_mouse_listeners");
+  //The click event for this button adds mouse listeners for the div box.
+  add_mouse_listeners_button.addEventListener("click", addMouseListeners);
+
+  var add_click_listeners_button = document.getElementById("add_click_listeners");
+  //The click event for this button adds click listeners for the div box.
+  add_click_listeners_button.addEventListener("click", addClickListeners);
+
+  var remove_click_button = document.getElementById("rem_click_listener");
+  remove_click_button.addEventListener("click", removeClickListener);
+
+  var remove_mouse_listener_button = document.getElementById("rem_mouse_listeners");
+  remove_mouse_listener_button.addEventListener("click", removeMouseListeners);
+
+  var remove_all_listeners_button = document.getElementById("rem_all_listeners");
+  remove_all_listeners_button.addEventListener("click", removeAllListeners);
+
+
+  //Add several listeners to one component.
+  //Adding a listener that a component already has, has no effect.
+
+  function addClickListeners() {
+    //Can add more than one listener for the same event.
+    //Need to specify different functions for each of these click listeners.
+    box.addEventListener("click", showClickMessage);
+    box.addEventListener("click", styleClickMessage);
+  }
+
+  function addMouseListeners() {
+    box.addEventListener("mouseover", showMouseOverMessage);
+    box.addEventListener("mouseout", showMouseOutMessage);
+  }
+
+  //Remove some listeners - remove click listeners separately.
+  function removeClickListener() {
+    box.removeEventListener("click", showClickMessage);
+    box.removeEventListener("click", styleClickMessage);
+  }
+
+  //Remove some listeners, other listeners not affected.
+  function removeMouseListeners() {
+    box.removeEventListener("mouseover", showMouseOverMessage);
+    box.removeEventListener("mouseout", showMouseOutMessage);
+  }
+
+  //Removing a listener that doesn't exist has no effect.
+  function removeAllListeners() {
+    box.removeEventListener("click", showClickMessage);
+    box.removeEventListener("click", styleClickMessage);
+    box.removeEventListener("mouseover", showMouseOverMessage);
+    box.removeEventListener("mouseout", showMouseOutMessage);
+  }
+
+
+  //Things to happen in response to events
+
+  function showClickMessage() {
+    mouse_info.innerHTML = "Click!";
+  }
+
+  function styleClickMessage() {
+    mouse_info.style.fontStyle = "italic"
+  }
+
+  function showMouseOverMessage() {
+    mouse_info.innerHTML = "Mouse in box!";
+  }
+
+  function showMouseOutMessage() {
+    mouse_info.innerHTML = "Mouse left box!";
+  }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conference Attendance Form</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+<body>
+
+<form id="form" action="#" method="post">
+
+<p><label for="toDoText">To Do List Maker</label><br>
+<input id="toDoText" maxlength="80" name="toDoText" type="text" value="" required="required" placeholder="Add your to do's here" /></p>
+        
+<button id="addToDo" type="submit" value="submit">ADD TO LIST
+</button>
+
+</form>
+<p style="margin-left:20px;font-weight: bold;font-size:20px;">Start My List:
+  <ul id="list">
+
+  </ul>
+  
+</p>
+</body>
+<script type="text/javascript">
+ function init(){
+ 	
+ 	var addToDo = document.getElementById('addToDo');
+ 	addToDo.addEventListener('click', function(e){
+ 		e.preventDefault();
+ 		if (document.getElementById('toDoText').value) {
+ 			var list = document.getElementById('list');
+	 		var todo = document.getElementById('toDoText').value;
+	 		var reg = RegExp(/[<>{}()""'']/g);
+	 		if(todo.length > 50){
+	 			alert('To do list must be shorter than 50 characters');
+	 			return false;
+	 		}
+	 		else if(reg.test(todo)){
+	 			alert('Please no special HTML characters');
+	 			return false;
+	 		}
+	 		var node = document.createElement('LI');
+	 		node.setAttribute('class', 'listItem');          
+			var textnode = document.createTextNode(todo);         
+			node.appendChild(textnode);                              
+			list.appendChild(node);
+			document.getElementById('toDoText').value = '';
+ 		}
+ 		else {
+ 			alert('please enter a todo');
+ 		}
+ 		
+ 	},false);
+
+ } // end init();
+
+ window.addEventListener('load', init(), false);
+</script>
+</html>

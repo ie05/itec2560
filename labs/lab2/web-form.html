@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conference Attendance Form</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+<body>
+
+<form id="form" action="#" method="post">
+
+<p><label for="user">Username</label><br>
+<input id="user" maxlength="70" name="user" type="text" value="" required="required" /></p>
+
+<p><label for="pass">Password</label><br>
+<input id="pass" name="pass" type="password" value="" required="required" /></p>
+
+
+
+<p><label for="email">Email</label><br>
+<input id="email" maxlength="100" name="email" type="email" value="" required="required" /></p>
+
+
+<p>
+  <label for="shirtsize">Shirt Size</label><br>
+   
+    <select id="shirtsize" name="shirtsize" required="required" >
+            <option value=""></option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+    </select>
+</p>
+
+<p><label for="bday">Birthday</label><br>
+<input name="bday" type="date" value="" required="required" /></p>
+
+
+<p>
+  <label for="receiveEmail">Receive emails from sponsors?</label><br>
+  <input id="yesReceiveEmail" name="receiveEmail" type="radio" value="Yes" required="required" />
+  <label for="receiveEmail">Yes</label>
+  <input id="noReceiveEmail" name="receiveEmail" type="radio" value="No" required="required" />
+  <label for="receiveEmail">No</label>
+</p>
+
+<p>
+  <label for="" >Which confernence are you attending?</label><br>
+  <input id="morningSessionSelection" name="sessionsSelection" type="checkbox" value="Morning" />
+  <label for="sessionsSelection" >Morning</label>
+  <br>
+  <input id="afternoonSessionSelection" name="sessionsSelection" type="checkbox" value="Afternoon" />
+  <label for="sessionsSelection">Afternoon</label>
+</p>  
+        
+<label for="requests">Any special requests</label>
+<div>
+  <textarea maxlength="300" id="requests" name="requests" cols="30" rows=""></textarea>
+</div>
+        
+<button id="submit" type="submit" value="submit">SUBMIT
+</button>
+
+</form>
+
+</body>
+</html>

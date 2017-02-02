@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavsScript Functions with Arguments</title>
+
+  <style>
+
+    #randomColor {
+      height : 200px;
+      width : 300px;
+      font-size: 20px;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+
+<!--Can provide arguments to JavaScript functions when called from code
+The argument "this" sends this element as an argument - in this case, the
+button elements sends itself as an argument. -->
+
+<button id='randomColor' onclick="changeToRandomColor(this)">Click me for a random color</button>
+
+<script>
+
+  function changeToRandomColor(element) {
+
+    element.style.backgroundColor = randomColor();
+
+  }
+
+  function randomColor() {
+
+    var r = Math.floor(Math.random() * 255);   //Pick a random number between 0 and 1
+    var g = Math.floor(Math.random() * 255);   //Multiply by 255 to get a number in the correct range
+    var b = Math.floor(Math.random() * 255);   //Then convert it to an int
+
+    //Colors can be created as "rgb(33, 52, 15)" where the numbers are R, G, B values.
+    //This is expected as a string.
+
+    var colorString = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    console.log(colorString);   //Avoid for production apps, OK for developing.
+    // You can see the output from this in the developer JavaScript console.
+
+    return colorString
+
+  }
+
+</script>
+
+</body>
+</html>
+
+

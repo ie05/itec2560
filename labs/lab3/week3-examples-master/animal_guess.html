@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Guesser</title>
+</head>
+<body>
+
+<h1>Animal Guesser</h1>
+
+<form>
+  Enter number of legs of your animal has:
+  <input type = "text" name = "legs" id="legs">
+  <button id='guess' type="button">Let computer guess the animal</button>
+</form>
+
+<P id="computer_guess"></P>
+
+
+<script>
+
+  document.getElementById('guess').addEventListener('click', guess);
+
+  function guess() {
+
+    var legsString = document.getElementById("legs").value;
+
+    if (!(isInteger(legsString))) {
+      document.getElementById("computer_guess").innerHTML = "Type a whole number please";
+      return;
+    }
+
+    var legs = parseInt(legsString, 10); //The 10 means use base 10, or decimal
+
+    var my_guess = "";
+
+    if (legs < 0) {
+      my_guess = "I don't think anything has a negative number of legs";
+    } else if (legs % 2 != 0) {
+      my_guess = "An odd number of legs, are you sure?";
+    } else if (legs == 0) {
+      my_guess = "Is it a snake?";
+    } else if (legs == 2) {
+    my_guess = "A biped animal, such as a human?";
+    } else if (legs == 4) {
+    my_guess = "A quadruped, like a zebra?";
+    } else if (legs == 6) {
+    my_guess = "Probably an insect, like a bee?";
+    } else if (legs == 8) {
+    my_guess = "Possibly a spider?";
+    } else if (legs > 8) {
+    my_guess = "More than 8 legs - perhaps a millipede?";
+    } else {
+    my_guess = "No idea?";
+    }
+
+    document.getElementById("computer_guess").innerHTML = "Computer thinks.... " + my_guess;
+
+  }
+
+
+  function isInteger(legsString) {
+
+    //Attempt to turn the string into a float
+    var float = parseFloat(legsString);
+
+    //Test if it worked - if so, it's a number of some kind
+    if (! isNaN(float)) {
+      //Is it an integer? Round down to the next integer
+      //and check the value doesn't change
+      if ((Math.floor(float)) === float) {
+        return true
+      }
+    }
+
+    //Otherwise, not an integer.
+    return false;
+
+  }
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<form>
+  <P>Please enter your name</P>
+  <input type="text" id="username">
+  <button type=button onclick="welcome()">Submit</button>
+</form>
+
+<p id="welcome_message"></p>
+
+<script>
+
+  function welcome() {
+    var name = document.getElementById("username").value;
+    document.getElementById("welcome_message").innerHTML = "Welcome, " + name + "!";
+  }
+
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conference Attendance Form</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head>
+<body>
+<div id="result"></div>
+
+</body>
+<script type="text/javascript">
+ function init(){
+ 	var result = document.getElementById('result');
+ 	
+	var width = function(){
+	   return window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0;
+	}
+	var height = function(){
+	   return window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0;
+	}
+	var area = function(){
+	 	var product = width() * height();
+	 	// return product;
+	 	result.textContent = 'Screen Size is: ' + product + 'px';
+	}
+	area();
+	window.addEventListener("resize", area);
+ 	
+
+
+ } // end init();
+
+ window.addEventListener('load', init(), false);
+</script>
+</html>
