@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Removing element</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <h2>To Do List</h2>
+
+  <ul id="first_list">
+    <li>Clean kitchen</li>
+    <li class="done">Write program</li>
+    <li class="done">Feed cat</li>
+    <li>Read book</li>
+  </ul>
+
+  <button type="button" id="delete_done">Delete things that are done</button>
+
+  <script>
+
+    $(function(){
+
+      $("#delete_done").click(function() {
+        //Select all of the class = "done" elements and
+        // remove them from the document
+        $(".done").remove();
+      });
+    });
+
+  </script>
+
+
+</body>
+</html>
+
+

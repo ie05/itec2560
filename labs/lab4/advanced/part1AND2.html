@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p,select,option{
+        font-family: 'Roboto';
+      }
+      #map{
+        height: 350px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <!-- <h3>My Google Maps Demo</h3> -->
+    <div id="map"></div>
+    <p><span style="font-weight: bold;font-size: 22px;">Can you identify these locations?</span><br>Make a guess and click the marker to see if your correct.</p>
+    <form id="form">
+      <p>Marker A:<br>
+      <select name="markera" id="markera">
+        <option value="">Select a location</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+      </select>
+      </p>
+      <p>Marker B:<br>
+      <select name="markerb" id="markerb">
+        <option value="">Select a location</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+      </select>
+      </p>
+      <p>Marker C:<br>
+      <select name="markerc" id="markerc">
+        <option value="">Select a location</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+      </select>
+      </p>
+    </form>
+    <script>
+      function initMap() {
+        var labels = ['Uluru','Owen\'s Spring','Norther Desert'];
+        var milwaukee = {lat: 43.120708, lng: -87.955634};
+        var madison = {lat: 43.120708, lng:-89.449774};
+        var minneapolis = {lat:44.937269, lng:-93.404852};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: {lat: 44.828288, lng:-91.581122},
+          mapTypeId: 'satellite',
+          showRoadLabels: false,
+          clickableIcons: true,
+          disableDefaultUI: true,
+          scaleControl: false,
+          scrollwheel:  false
+        });
+
+        // create milwaukee marker
+        var marker1 = new google.maps.Marker({
+          position: milwaukee,
+          map: map,
+          label: 'C'
+        });
+        // create milwaukee event listener
+        google.maps.event.addListener(marker1,'click',function() {
+          // get select input value for marker c
+          var answer = document.getElementById('markerc').value;
+          // store empty string for answer
+          var content = '';
+          // ternary operator to update marker content if answer is correct
+          answer == 'Milwaukee' ? content = 'Correct, this is Milwaukee' : content = 'Sorry, try again';
+          var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+          infowindow.open(map,marker1);
+        });
+        // create madison marker
+        var marker2 = new google.maps.Marker({
+          position: madison,
+          map: map,
+          label: 'B'
+        });
+        // create madison event listener
+        google.maps.event.addListener(marker2,'click',function() {
+          var answer = document.getElementById('markerb').value;
+          var content = '';
+          answer == 'Madison' ? content = 'Correct, this is Madison' : content = 'Sorry, try again';
+          var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+          infowindow.open(map,marker2);
+        });
+        // create minneapolis marker
+        var marker3 = new google.maps.Marker({
+          position: minneapolis,
+          map: map,
+          label: 'A'
+        });
+        // create minneapolis event listener
+        google.maps.event.addListener(marker3,'click',function() {
+          // get select input value for marker a
+          var answer = document.getElementById('markera').value;
+          // store empty string for answer
+          var content = '';
+          // ternary operator to update marker content if answer is correct
+          answer == 'Minneapolis' ? content = 'Correct, this is Minneapolis' : content = 'Sorry, try again';
+          var infowindow = new google.maps.InfoWindow({
+              content: content
+            });
+          infowindow.open(map,marker3);
+        });
+      } // end init
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgjULCFgmX0Bhsi46k3R5lQUtCwCmKwCc&callback=initMap">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Selectors</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>This is a H1 element, it should be centered</h1>
+
+<p>I'm a paragraph. A list follows.</p>
+
+<ul>
+  <li id="one">One</li>
+  <li id="two">Two</li>
+  <li id="three">Three</li>
+  <li id="four">Four</li>
+</ul>
+
+<p>I'm a paragraph</p>
+
+<script>
+
+  $("document").ready(function(){
+
+    /* All of this runs when the document loads. */
+
+    $("p").css({
+      "color" : "blue",
+      "background-color" : "lightgreen"
+    });
+
+    //Select even <li> elements and make them red
+    $("li:even").css({"color" : "red", "font-weight" : "bold"});
+    //Select odd <li> elements and make them blue
+    $("li:odd").css({"color" : "blue", "font-weight" : "bold"});
+
+    //Center-align h1 elements
+    $("h1").css({"text-align":"center"});
+
+  });  //End of ready function
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Forms</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <h2>Enter To Do Task</h2>
+
+<form>
+  <label for="task">What do you need to do?</label>
+  <input type="text" id="task"> <br>
+
+  <label for="due">When do you need to do it by?</label>
+  <input type="date" id="due"> <br>
+
+  <label for="ready">Are you ready to do it?</label>
+  <input type="checkbox" id="ready"> <br>
+
+  <button type="button" id="submit_button">Submit</button>
+</form>
+
+  <script>
+
+    $(function(){
+
+      $("#submit_button").click(function() {
+
+        var task = $('#task').val();     // The text
+        var isReady = $('#ready').prop('checked');   // Read the checked attribute
+        var dueDate = $('#due').val();   //  A string, e.g "2017-03-20"
+
+        if (task.length == 0 || dueDate.length == 0) {  //Validation
+          alert('Please fill out all of the form')
+        }
+
+        else {           //Process the data entered
+          if (isReady) {
+            alert("Ready for " + task + " due on " + dueDate + "!");
+          }
+          else {
+            alert("Not ready for " + task + " due on " + dueDate);
+          }
+        }
+      });
+    });
+
+  </script>
+
+
+</body>
+</html>
+
+

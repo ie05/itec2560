@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Essential Canvas</title>
+
+  <style>
+
+    #canvas {
+      border: 1px black solid;
+      margin: 0 auto;
+      display: block
+    }
+    #cat-image{
+    	margin-left: -1000px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<canvas id="canvas" height="600" width="600"></canvas>
+<img id="cat-image" class="hide" src="small-cat.jpg" alt="cat">
+<script>
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var image = document.getElementById('cat-image');
+context.fillStyle = '#ff4c00';
+context.fillRect(20,20,200,100);
+
+context.strokeStyle = "Red";
+context.strokeRect(350,100,100,100);
+context.strokeRect(350,250,200,100);
+
+// start circle
+context.strokeStyle = 'Blue';
+context.beginPath();
+context.arc(100,300,50,0,2*Math.PI);
+context.stroke();
+
+// build line
+context.strokeStyle = '#049F79';
+context.moveTo(100,100);
+context.lineTo(325,325);
+context.stroke();
+
+// add text
+context.fillStyle = '#000000';
+context.fillText('Blue fill',10,10);
+// more text
+context.font = '40px Arial';
+context.strokeStyle = '#522DDB';
+context.strokeText('Blue fill',400,400);
+// more text
+context.strokeStyle = '#fff000';
+context.font = '20px Arial';
+context.strokeText('Large purple stroke', 100,450);
+
+// create cat image
+context.drawImage(image,300,100);
+</script>
+</body>
+</html>

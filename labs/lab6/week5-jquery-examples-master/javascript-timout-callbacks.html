@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery</title>
+
+  <script>
+
+
+      //setTimeout takes two arguments; a callback function and the delay in milliseconds
+      setTimeout( function() {
+        alert("I waited 3 seconds after the document loading to show this")
+      }, 3000 );
+
+
+      //Alternative with named function - easier to see the arguments
+
+      setTimeout(showMsg, 6000);
+
+      function showMsg() {
+        alert("I waited 6000 milliseconds to show this alert message")
+      }
+
+
+  </script>
+</head>
+
+<body>
+
+<h2>This page uses plain (vanilla) JavaScript. Please wait for the alert dialog....</h2>
+
+</body>
+
+</html>

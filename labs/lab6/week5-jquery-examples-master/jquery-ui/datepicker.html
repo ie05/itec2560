@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date Picker with JQuery UI</title>
+
+  <!--Usually apply styles to Datepicker widgets, look very basic otherwise -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <!--Need the JQuery and JQuery UI libraries-->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+</head>
+<body>
+
+  <p>Choose a date to calculate how many days away it is from today.</p>
+
+
+  <input type="text" id="datepicker">
+
+
+  <P>Your date was...<span id="displayDate"></span></P>
+
+  <p>That is...  <span id="dateDifference"></span> days from today.</p>
+<script>
+
+  $(function(){
+    $("#datepicker").datepicker({
+      changeMonth:true,   //optional - do you want a month dropdown?
+      changeYear:true    //Also optional
+    });
+
+
+    //Attach a change listener to the input element
+    $("#datepicker").change(function(){
+      //What date is selected?
+      var date = $("#datepicker").datepicker("getDate");
+      $("#displayDate").text(date);
+      $("#dateDifference").text(calculateDifference(date));   //Can use the date in rest of page.
+      //TODO display difference as "15 days in the future" or "20 days in the past".
+    });
+
+
+  });
+
+  //How many days difference between now and selected date?
+  function calculateDifference(selectedDate) {
+    var today = new Date();                         //Create a date object, defaults to current date/time
+    var todayMS = today.getTime();                  //Convert to Unix time : milliseconds since Jan 1, 1970
+    var selectedMS = selectedDate.getTime();        //Same for selected date
+    var differenceMS = selectedMS - todayMS;        //Subtract one time in ms from the other, to get ms difference between the dates
+    var daysDifference = Math.floor(differenceMS / 1000 / 3600 / 24);    //Convert ms to days and round to nearest int. (Is Math.floor correct here?)
+    return daysDifference;
+  }
+
+  //TODO if doing anything any more complex with dates, the Moment library is very useful.
+
+</script>
+
+</body>
+</html>

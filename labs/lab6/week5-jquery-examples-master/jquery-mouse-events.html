@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Toggling Classes</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+   <p id="show_cat">Mouse over this text to see a cat picture. Mouse away to hide it.</p>
+
+  <img id="cat" src="images/cat.jpg" hidden>
+
+  <script>
+
+    $(function(){
+
+
+      $("#show_cat").mouseover(function(){
+        $("#cat").show()
+      });
+
+      $("#show_cat").mouseout(function() {
+        $("#cat").hide();
+      });
+
+
+/*
+
+// Alternative to the code above - can chain several event handler methods together
+
+      $("#show_cat")
+        .mouseover(function(){
+        $("#cat").show()
+      })
+        .mouseout(function() {
+        $("#cat").hide();
+      });
+
+*/
+
+    });  //End of ready function
+
+  </script>
+
+</body>
+</html>
+

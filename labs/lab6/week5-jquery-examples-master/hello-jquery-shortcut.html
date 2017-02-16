@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <p>Click me</p>
+  <p>Click me too</p>
+
+  <script>
+
+    $(function(){
+
+      $("p").click(function() {
+        $(this).hide();
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Adding Elements</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+  <h2>Cat to do list</h2>
+
+  <button type="button" id="append_item">Add item to end of list</button>
+  <button type="button" id="prepend_item">Add item to start of list</button>
+  <button type="button" id="prepend_item_to">Add item to start of list</button>
+
+  <ul id="to_do"></ul>
+
+  <script>
+
+    $(function() {
+
+      // Create li item, append it (add it as the last child)
+      // of the #to_do list element
+      $("#append_item").click(function () {
+        $("#to_do").append("<li>Meow</li>");
+      });
+
+      // Create li element, ask parent to prepend this new element. Use prepend()
+      // Element added as the first child of the #to_do list element
+      $("#prepend_item").click(function () {
+        $("#to_do").prepend("<li>Meow (urgent)</li>");
+      });
+
+      // Alternative - Create li element, li attaches itself to parent
+      // Does same as above. Notice this uses prependTo() function
+      $("#prepend_item_to").click(function () {
+        ("<li>Meow (urgent)</li>").prependTo($("#to_do"));
+      });
+
+
+    });
+
+  </script>
+
+</body>
+</html>
+
+

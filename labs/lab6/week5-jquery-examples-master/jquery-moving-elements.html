@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moving an element</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>First List</h2>
+<ul id="first_list">
+  <li>A</li>
+  <li>B</li>
+  <li>C</li>
+</ul>
+
+<button type="button" id="first_to_second">Move last element to second list</button>
+
+<h2>Second List</h2>
+<ul id="second_list">
+  <li>D</li>
+  <li>E</li>
+  <li>F</li>
+</ul>
+
+<button type="button" id="second_to_first">Move last element to first list</button>
+
+<script>
+
+  $(function(){
+
+    $("#first_to_second").click(function() {
+      move("#first_list", "#second_list");
+      });
+
+    $("#second_to_first").click(function() {
+      move("#second_list", "#first_list");
+    });
+  });
+
+
+  function move(origin, dest) {
+
+    //move last element of list identified by first selector
+    //to list identified by second selector
+
+    // Select the origin list, and find all li elements
+    var originListElements = $(origin).find("li");
+
+    //If origin list has no elements, return
+    if (originListElements.length == 0) {
+      return;
+    }
+
+    //Otherwise, identify last element; save in lastElement
+    var lastElement = originListElements.last();
+
+    //Identify destination list
+    var destinationList = $(dest);
+
+    //Add last element of originList to destination list.
+    //Since there's only one of this element, it must be removed
+    //from the origin list. So, the effect is to MOVE the element.
+    destinationList.append(lastElement);
+
+  }
+
+</script>
+
+</body>
+</html>

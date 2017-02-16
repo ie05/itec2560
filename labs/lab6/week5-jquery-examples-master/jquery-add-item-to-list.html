@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Adding Elements</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+  <h2>Bird to do list</h2>
+
+  <button type="button" id="new_item_html_string">Add list item with HTML</button>
+  <button type="button" id="new_item_dom">Add list item with DOM methods</button>
+  <button type="button" id="new_item_jquery">Add list item with JQuery</button>
+  <button type="button" id="new_item_jquery_alt">Add list item with JQuery</button>
+
+
+  <ul id="to_do"></ul>
+
+  <script>
+
+    $(function() {
+
+      //Append HTML text, to #to_do element
+      $("#new_item_html_string").click(function() {
+        $("#to_do").append("<li>HTML Tweet</li>");
+      });
+
+      //Create element in JS, configure as needed, append to #to_do
+      $("#new_item_dom").click(function() {
+        //Add new list element to the to do list
+        var li = document.createElement("li");
+        li.innerHTML = "DOM Tweet";
+        $("#to_do").append(li);
+      });
+
+      //Create using JQuery $() method. This is used to select elements,
+      //but if it is passed a HTML string, it will make elements instead
+      //Still need to append them to the appropriate parent
+      $("#new_item_jquery").click(function(){
+        //Create li element, append it to the #to_do list
+        $("<li>JQuery Tweet</li>").appendTo($("#to_do"));
+
+        /*
+        //Alternatively, select the list, append new li element
+        $("#to_do").append($("<li>Tweet</li>"));
+        */
+
+      });
+
+      // Alternative: create new element with $() function, configure it, then append
+      $("#new_item_jquery_alt").click(function(){
+        var li = $("<li></li>").text("Configured JQuery Tweet");
+        li.appendTo("#to_do");
+
+        /*
+        //Or, append li to #to_do
+        $("#to_do").append(li);
+        */
+      });
+
+    });
+
+
+
+  </script>
+
+</body>
+</html>
+
+

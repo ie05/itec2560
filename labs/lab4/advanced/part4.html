@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p,select,option,div{
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      }
+      #map{
+        height: 350px;
+        width: 100%;
+       }
+       .complete{
+         text-decoration: line-through;
+         color: green;
+       }
+       .complete:after{
+        content: ' complete';
+       }
+       button{
+        margin-top:10px;
+       }
+       #reset{
+        display: none;
+       }
+    </style>
+  </head>
+  <body>
+    <!-- <h3>My Google Maps Demo</h3> -->
+    <div id="map"></div>
+    <p><span style="font-weight: bold;font-size: 22px;">Can you identify three cities in each of these U.S. regions?</span><br>Make your guesses and submit your answers</p>
+    <div id="pacificnw">Region 1: Pacific Northwest</div>
+    <div id="southcentral">Region 2: South Central</div>
+    <div id="northeast">Region 3: Northeast</div>
+    <form id="form">
+
+      <p>Marker A:<br>
+      <select name="markera" id="markera">
+        <option value="" selected="selected">Select a location</option>
+        <option value="Portland">Portland</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Olympia">Olympia</option>
+      </select>
+      </p>
+      <p>Marker B:<br>
+      <select name="markerb" id="markerb">
+        <option value="" selected="selected">Select a location</option>
+        <option value="Portland">Portland</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Olympia">Olympia</option>
+      </select>
+      </p>
+      <p>Marker C:<br>
+      <select name="markerc" id="markerc">
+        <option value="" selected="selected">Select a location</option>
+        <option value="Portland">Portland</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Olympia">Olympia</option>
+      </select>
+      </p>
+      <br>
+      <button id="submitAnswers" value="submit">Submit Answers</button>
+      <button id="reset" value="reset">Play Again</button>
+      </p>
+    </form>
+    <div id="results"></div>
+    <script>
+      function initMap() {
+        
+        // city set 1
+        var regions = [
+
+        ];
+        var pacificnw = {
+          cities:[
+            {lat: 45.542805, lng: -122.738683, label: 'Portland', answer: ''}, 
+            {lat: 47.611619, lng: -122.337682, label: 'Seattle', answer: ''}, 
+            {lat: 47.036338, lng: -122.919957, label: 'Olympia', answer: ''}
+           ],
+          center:{lat: 46.978278, lng: -122.164647},
+          score: null 
+        };
+        // city set 2
+        var southcentral = {
+          cities:[
+            {lat: 29.797689, lng: -95.396360, label: 'Houston', answer: ''},
+            {lat: 32.579160, lng: -93.817076, label: 'Shreveport', answer: ''}, 
+            {lat: 32.805685, lng: -96.871275, label: 'Dallas', answer: ''}  
+          ],
+          center:{lat: 31.765477, lng: -95.399107}, 
+          score: null
+        };
+
+        // city set 3
+        var northeast = {
+          cities: [
+            {lat: 45.549903, lng: -73.676396, label: 'Montreal', answer: ''},
+            {lat: 40.713850, lng: -74.006346, label: 'New York', answer: ''},
+            {lat: 43.736647, lng: -79.422246, label: 'Toronto', answer: ''}
+          ],
+          center:{lat: 42.857115, lng: -74.851933},  
+          score: null
+        };
+
+        regions.push(pacificnw,southcentral,northeast,'end');
+
+        var current = 0;
+        var obj = regions[current];
+        
+
+        // // generate initial map
+        // var map = new google.maps.Map(document.getElementById('map'), {
+        //     zoom: 5,
+        //     center: {lat:obj.center.lat, lng:-73.676396},
+        //     mapTypeId: 'satellite',
+        //     showRoadLabels: false,
+        //     clickableIcons: true,
+        //     disableDefaultUI: true,
+        //     scaleControl: false,
+        //     scrollwheel:  false
+        //   });
+
+        function createMap(){
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: {lat:45.549903, lng:-73.676396},
+            mapTypeId: 'satellite',
+            showRoadLabels: false,
+            clickableIcons: true,
+            disableDefaultUI: true,
+            scaleControl: false,
+            scrollwheel:  false
+          });
+          return map;
+        }
+
+        var map = createMap();
+
+
+        // define create marker function 
+        function createMarker(obj){
+          
+          for (let i = 0; i < obj.cities.length; i++) {
+            var placeholder = ['A','B','C'];
+            var marker = new google.maps.Marker({
+            position: {lat: obj.cities[i].lat, lng: obj.cities[i].lng},
+            map: map,
+            label: placeholder[i] // obj.cities[i].label
+            });
+          }
+          return marker;
+        } // end createMarker
+
+        // createMarker(obj);
+        
+        // function updateForm(){
+        //   markera = document.getElementById('markera');
+        //   markerb = document.getElementById('markerb');
+        //   markerc = document.getElementById('markerc');
+        //   removeArr = [markera,markerb,markerc];
+
+        //   for (var i = 0; i < removeArr.length; i++) {
+        //     for (var j = 1; j < removeArr[i].length; j++) {
+        //       removeArr[i][j].setAttribute('value', regions[current].cities[j-1].label);
+        //       removeArr[i][j].textContent = regions[current].cities[j-1].label;
+        //       removeArr[i][j].setAttribute('selected', 'selected');
+        //       removeArr[i][0].selected = true;
+        //     } // end inner loop
+        //   } // end outer loop
+        // }
+
+        // function updateScore(){
+        //   var answers = document.getElementById('form').elements;
+        //   var score = 0;
+        //   for (var i = 0; i <= answers.length - 3; i++) {
+        //     if (answers[i].value == regions[current].cities[i].label) {
+        //       score++;
+        //     }
+        //     regions[current].cities[i].answer = answers[i].value;
+        //   }
+        //     regions[current].score = score;
+
+        // }
+
+        // function clearScore(){
+        //   for (var i = 0; i < regions.length; i++) {
+        //     regions[current].score = 0;
+        //   }
+        // }
+
+        // function getScore(){
+        //   var score = 0;
+        //   for (var i = 0; i < regions.length - 1; i++) {
+        //     score += regions[i].score;
+        //   }
+        //   return score;
+        // }
+
+        // function updateMap(){
+        //   current++;
+        //   obj = regions[current];
+        //   if (obj == 'end') {
+        //     score = getScore();
+        //     alert('game completed: you scored: ' + score + ' out of 9');
+        //     var submit = document.getElementById('submitAnswers');
+        //     var reset = document.getElementById('reset');
+        //     submit.style.display = 'none';
+        //     reset.style.display = 'block';
+        //     return;
+        //   }else{  
+        //     map = createMap(obj);
+        //     marker = createMarker(obj);
+        //   }
+        // }
+
+        // var submit = document.getElementById('submitAnswers');
+        // submit.addEventListener('click',function(e){
+        //   if (regions[current] == pacificnw) {
+        //     var regionNode = document.getElementById('pacificnw');
+        //     regionNode.setAttribute('class', 'complete');
+        //   }
+        //   if (regions[current] == southcentral) {
+        //     var regionNode = document.getElementById('southcentral');
+        //     regionNode.setAttribute('class', 'complete');
+        //   }
+        //   if (regions[current] == northeast) {
+        //     var regionNode = document.getElementById('northeast');
+        //     regionNode.setAttribute('class', 'complete');
+        //   }
+        //   e.preventDefault();
+        //   updateScore();
+        //   updateMap();
+        //   updateForm();
+        // });
+
+        // var reset = document.getElementById('reset');
+        // reset.addEventListener('click',function(e){
+        //   e.preventDefault();
+        //   submit.style.display = 'block';
+        //   reset.style.display = 'none';
+        //   current = 0;
+        //   obj = regions[current];
+        //   map = createMap(obj);
+        //   marker = createMarker(obj);
+        //   updateForm()
+          
+        //   var completed = document.getElementsByClassName('complete');
+        //   // not sure why, one loop isn't removing all the classes
+        //   for (var i = completed.length -1; i > 0; i--) {
+        //     completed[i].classList.remove('complete');
+
+        //   }
+        //   // need this second loop to finish removing this css class
+        //   for (var i = 0; i < completed.length; i++) {
+        //     completed[i].classList.remove('complete');
+
+        //   }
+         
+        // });
+
+      } // end init
+    </script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgjULCFgmX0Bhsi46k3R5lQUtCwCmKwCc&callback=initMap">
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgjULCFgmX0Bhsi46k3R5lQUtCwCmKwCc&libraries=places"></script>
+  </body>
+</html>

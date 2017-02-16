@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Page with a Google Map</title>
+
+  <!--From the Google maps developer documentation
+  https://developers.google.com/maps/tutorials/fundamentals/adding-a-google-map-->
+
+  <style>
+    #map {
+      height: 400px;
+      width: 500px;
+    }
+  </style>
+
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgjULCFgmX0Bhsi46k3R5lQUtCwCmKwCc&callback=initMap">
+  </script>
+
+  <script>
+    function initMap() {
+      var mapCanvas = document.getElementById("map");
+      var mapOptions = {
+        center : new google.maps.LatLng(44.88, -93.22),   // Lat and long to center the map on
+        zoom : 12,                                     // 0 = the whole world, 22 = max zoom in
+        mapTypeId : google.maps.MapTypeId.ROADMAP      //or SATELLITE, HYBRID or TERRAIN
+      };
+
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+
+      var markerOptions = {
+        position : new google.maps.LatLng(44.88, -93.22), //Where is the marker?
+        map : map,                       //Add to what map?
+        draggable : false,               //No moving the marker!
+        title : "Here is the airport"    //Tooltip/rollover text
+      };
+      var marker = new google.maps.Marker(markerOptions);
+
+      var infowindow = new google.maps.InfoWindow ( {
+        content : "Minneapolis is right here"
+      });
+
+      marker.addListener("click", function() {
+        infowindow.open(map, marker);
+      });
+
+    }
+
+  </script>
+
+</head>
+<body>
+
+<h1>A map of Minneapolis</h1>
+<!--This div will contain a map. Note that the size of this div is set with CSS.-->
+<div id="map"></div>
+
+<P>The <a href="https://developers.google.com/maps/documentation/javascript/reference">Google Maps API reference was very helpful.</a></P>
+</body>
+</html>

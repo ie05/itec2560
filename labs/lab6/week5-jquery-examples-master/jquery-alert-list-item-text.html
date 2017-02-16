@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>Click on one of the animals...</h2>
+  <p>Bird</p>
+  <p>Cat</p>
+  <p>Dog</p>
+
+<script>
+
+  $(function(){
+
+    // Select p elements and attach a click listener to each
+    $("p").click(function() {
+      //This callback function runs when a p element is clicked
+      // $(this) selects the element that the event happened to
+      alert("You clicked " + $(this).text());
+    });   //end of click event callback function
+
+  });  //End of ready function call
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>Click on one of the animals...</h2>
+  <p>Bird</p>
+  <p>Cat</p>
+  <p>Dog</p>
+
+<script>
+
+  //The $(document) selector selects the whole document
+  //Attach a ready event handler to the document
+  //This takes a function as a parameter. The function is called
+  //when the document is ready - when the ready event happens
+  //So all of the code inside the function() definition runs when the
+  //document is loaded and ready
+
+  $(document).ready(function(){
+
+    //This is another callback function
+    //I wrote it all on one line; you can see that the whole function definition
+    // is an argument of the click() function
+    // The function runs when the click event happens
+    // So, you are specifying what to do when the click even happens
+    // (Multi-line is more common - see all the other examples)
+
+  //  $("p").click(function() { alert("You clicked " + $(this).text()); }  );
+
+    //Note that jQuery adds an individual click event handler to each element
+    //that the $("p") selector returns.
+
+
+
+    /*
+
+     //This is the same code as above; but on multiple lines - more readable
+
+     $("p").click(function() {
+       alert("You clicked " + $(this).text());
+     });
+
+    */
+
+
+
+    /*
+
+     //Same code again, but using a named function
+
+     $("p").click(alertFunction); //Use the function's name, no parenthesis ()
+
+     function alertFunction() {
+       alert("You clicked " + $(this).text());
+     }
+
+      */
+
+  });  //End of ready function call
+
+
+</script>
+
+</body>
+
+</html>

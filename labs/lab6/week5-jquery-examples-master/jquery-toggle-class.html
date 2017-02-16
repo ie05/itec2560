@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Toggling Classes</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <style>
+
+    .bold {                 /* A style for elements with the bold class */
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+ <p>Here's a list. Some of the items are bold, some are not bold.
+    Click on the list items to change if they are bold or not.</p>
+
+  <ul>
+    <li>One</li>
+    <li>Two</li>
+    <li class="bold">Three</li>
+    <li>Four</li>
+  </ul>
+
+  <script>
+
+    $(function(){
+
+      // Select all the li elements, add click listener
+      $("li").click(function(){
+        // For the element clicked, add the bold class if not present
+        // remove the bold class if it is present
+        $(this).toggleClass("bold");
+      });
+
+    });  //End of ready function
+
+  </script>
+
+</body>
+</html>
+

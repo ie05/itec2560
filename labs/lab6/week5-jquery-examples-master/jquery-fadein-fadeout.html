@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery animation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <style>
+    td {
+      width : 40px;
+      height : 40px;
+      border: 2px solid black;   /* Consolidate border properties */
+      text-align: center;
+      background-color: greenyellow;
+    }
+  </style>
+
+</head>
+<br>
+
+  <h2>Click on a box to remove it</h2>
+
+  <!-- 'Boxes' are table cells -->
+  <table>
+    <tr><td>A</td><td>B</td></tr>
+    <tr><td>C</td><td>D</td></tr>
+  </table>
+
+  <button type="button" id="fade_in">Bring back boxes</button>
+  <br>
+  <button type="button" id="fade_in_slowly">Bring back boxes slowly</button>
+
+  <script>
+
+    $(function(){
+
+      $("td").click(function() {
+        $(this).fadeOut();
+      });
+
+      $("#fade_in").click(function() {
+        $("td").fadeIn();
+      });
+
+      $("#fade_in_slowly").click(function() {
+        $("td").fadeIn(2000);  //Optionally specify how long the fade will take, in ms
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

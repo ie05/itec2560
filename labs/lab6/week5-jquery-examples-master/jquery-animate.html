@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery animation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <style>
+    div {
+      width : 40px;
+      height : 40px;
+      border: 2px solid black;   /* Consolidate border properties */
+      text-align: center;
+      background-color: aqua;
+    }
+  </style>
+
+</head>
+
+<h2>JQuery Animate</h2>
+
+<P>Click the buttons to animate the boxes. Note that you can start
+  more than one animation at once, and they will run in parallel.</P>
+
+<button type="button" id="animate_a">Animate A</button>
+<br>
+<button type="button" id="animate_b">Animate B</button>
+<br>
+<button type="button" id="animate_c">Animate C</button>
+<br>
+<button type="button" id="animate_d">Animate D</button>
+
+<P>
+  <br>
+  <button type="button" id="reset">Reset all</button>
+
+</P>
+
+  <!-- 'Boxes' -->
+  <div id="a">A</div>
+  <div id="b">B</div>
+  <div id="c">C</div>
+  <div id="d">D</div>
+
+
+  <script>
+
+    $(function(){
+
+      $("#animate_a").click(function() {
+        $('#a').animate({ height : '70' }, 2000);  // Change #a height to 70px, over 2000 milliseconds
+      });
+
+      $("#animate_b").click(function() {
+        $('#b').animate({ width : '70' , height : '60' }, 2000);  // Change #b height and width simultaneously
+      });
+
+      $("#animate_c").click(function() {
+        $('#c').animate({ height : '70' }, 2000)
+          .animate( { width : '60' } );  // Change #c height followed by change width
+        // Each successive animate() call is queued and they will run in order.
+      });
+
+      $("#animate_d").click(function() {
+        // Animate with a callback function, which runs when the animation has finished
+        $('#d').animate({ height : '70' }, 2000, function() {
+          $(this).text('done')
+        });
+      });
+
+      $("#reset").click(function() {
+        // finish() ends every running and queued animation, which means the element
+        // will be immediately set to the final CSS property.
+        // So, also reset the CSS values to return the element to their original style.
+        $('div').finish().css("height", "").css("width", "");  // Reset CSS properties. Can chain .css function calls too
+        $('#d').text('D');
+
+      });
+
+
+    });
+
+  </script>
+
+</body>
+</html>

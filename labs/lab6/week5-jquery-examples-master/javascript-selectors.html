@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery (In JavaScript)</title>
+
+  <!-- Only needed with JQuery
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ -->
+
+</head>
+
+<body>
+
+<div id="my_div">
+
+  <p>One of the free textbooks for this class is called
+    <span class="book_title">Eloquent JavaScript</span>.</p>
+
+  <p>And another useful book is <span class="book_title">Dive into HTML5</span>,
+    available <a href="http://diveinto.html5doctor.com/">here</a>. </p>
+
+</div>
+
+
+  <script>
+
+    //Same logic in JavaScript. Placing script at end of the <body> tag
+    //means that it doesn't run until the body (and contained elements)
+    //has all loaded completely; otherwise you might be trying to operate
+    //on elements that haven't loaded yet.
+    //Different practices for external scripts: discussion on SO here:
+    // http://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup
+
+    //Get all of the elements with one particular tag
+    var allParas = document.getElementsByTagName("p");
+
+    //Get one element by the id attribute
+    var oneParticularDiv = document.getElementById("my_div");
+
+    oneParticularDiv.style.textAlign = "center";    //Can also do this in CSS, of course.
+
+    //Get all of the elements with a specific class.
+    var allBookTitles = document.getElementsByClassName("book_title");
+
+    //And you can also do this in CSS, but...
+    for (var book in allBookTitles) {
+      (allBookTitles[book]).style.fontStyle = "italic";
+    }
+  </script>
+</body>
+
+
+</html>

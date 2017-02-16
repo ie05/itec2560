@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Selectors for Finding Elements</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h1>Double-click me</h1>
+
+<p class="mouse">Click me to change my style.</p>
+
+<P>Here is a list.</P>
+
+<ul>
+  <li id="one">One</li>
+  <li id="two">Two</li>
+  <li id="three" class="mouse">Three</li>
+  <li id="four">Four</li>
+</ul>
+
+<button id="list_stripes" type="button">Make list stripy</button>
+
+<p>Click me too</p>
+
+<P></P>
+
+<script>
+
+  $(function(){
+
+    // Select all P elements
+    $("p").click(function(){
+      $(this).css({
+        "color" : "blue",
+        "background-color" : "pink"
+      });
+    });
+
+    //Select elements with class "mouse" and add mouseover event
+    //Change style to background : purple
+    $(".mouse").mouseover(function() {
+      $(this).css({ "background" : "purple"})
+    });
+
+    // Select element with id = "list_stripes" and add a click listener
+    // the callback function runs when the element is clicked
+    $("#list_stripes").click(function(){
+
+      //Select even li elements and make them red, bold
+      $("li:even").css({
+        "color" : "red",
+        "font-weight" : "bold"
+      });
+
+      //Select odd li elements and make them blue, italic
+      $("li:odd").css({
+        "color" : "blue",
+        "font-style" : "italic"
+      });
+
+    });  //end of click function callback
+
+    // Add double-click listener with the dblclick function.
+    // When h1 elements are clicked, change their style to center-aligned
+    $("h1").dblclick(function(){
+      $(this).css({"text-align":"center"});
+    })
+
+  });  //End of ready function
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Toggling</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <style>
+
+    /* A style for a elements with mouse_is_over class */
+    a.mouse_is_over {
+      background-color: gainsboro;
+      font-style : italic;
+      color: navy;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>JQuery Hover Demo</h1>
+
+<p>Move your mouse over the links to change their style.
+
+<p>JQuery hover() reference is <a href="https://api.jquery.com/hover/">here</a></P>
+
+<p>Here is another link, to the <a href="http://www.w3schools.com/jquery/default.asp">W3Schools JQuery tutorial</a>.</P>
+
+
+<script>
+
+  $(function(){
+
+    $("a").hover(
+
+      //The mouseover function
+      function(){
+        $(this).addClass("mouse_is_over");
+      },
+
+      //The mouseout function
+      function() {
+        $(this).removeClass("mouse_is_over");
+      }
+
+    );   //end of hover() function. All one line of code!
+
+
+  });  //End of ready function
+
+</script>
+
+
+</body>
+</html>

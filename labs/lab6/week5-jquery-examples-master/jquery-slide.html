@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery slideDown and slideUp animation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <style>
+    td {
+      width : 40px;              /*Turn table cells into boxes */
+      height : 40px;
+      border: 2px solid black;   /* Consolidate border properties */
+      text-align: center;
+      background-color: fuchsia;
+    }
+    button {
+      margin:15px
+    }
+  </style>
+
+</head>
+<body>
+
+  <p>Click on the boxes to make them disappear </p>
+
+  <table>
+    <tr><td>A</td></tr>
+    <tr><td>B</td></tr>
+    <tr><td>C</td></tr>
+    <tr><td>D</td></tr>
+  </table>
+
+  <button type="button" id="fade_back">Bring back boxes</button>
+
+  <script>
+
+    $(function(){
+
+      $("td").click(function() {
+        //1000 is the time in ms taken to fade out the element.
+        //It's optional, so this $(this).slideUp(); works too
+        $(this).slideUp(1000);
+      });
+
+      $("#fade_back").click(function() {
+        $("td").slideDown(1000);   //number parameter is optional
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>

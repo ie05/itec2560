@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello JQuery (In JavaScript)</title>
+
+  <!-- Only needed with JQuery
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   -->
+
+</head>
+
+<body>
+
+  <p>Click me</p>
+
+  <p>Click me too</p>
+
+
+  <script>
+
+    //    This is the JQuery version
+    //
+    //        $(document).ready(function(){
+    //          $("p").click(function() {
+    //            $(this).hide();
+    //          });
+    //        });
+
+    //Same logic in JavaScript. Note the event listener for the document
+    //ready event.
+    //http://stackoverflow.com/questions/9899372/pure-javascript-equivalent-to-jquerys-ready-how-to-call-a-function-when-the
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+      var paras = document.getElementsByTagName("p");
+      for (var p in paras) {
+        paras[p].addEventListener("click", function () {
+          this.style.visibility = "hidden";
+        });
+      }
+    });
+
+
+  </script>
+</body>
+
+
+</html>

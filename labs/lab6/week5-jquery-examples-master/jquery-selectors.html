@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery Selectors</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+
+    $("document").ready(function(){
+
+
+      $("p").click(function(){
+        $(this).css({
+          "color" : "blue",
+          "background-color" : "lightgreen"
+        });
+      });
+
+
+      //Select element with id = "liststripes" and add
+      //the click function; the callback runs when the element
+      //is clicked.
+      $("#liststripes").click(function(){
+        //Select even elements and make them red
+        $("li:even").css({"color" : "red", "font-weight" : "bold"});
+        //Select odd elements and make them blue
+        $("li:odd").css({"color" : "blue", "font-weight" : "bold"});
+      });
+
+
+      //Add doubleclick listener. Again, change this element's style
+      $("h1").dblclick(function(){
+        $(this).css({"text-align":"center"});
+      })
+
+
+    });  //End of ready function
+
+  </script>
+
+
+</head>
+
+
+
+<body>
+
+<h1>Double-click me</h1>
+
+<P>Here is a list.</P>
+
+<p>Click me to change my style.</p>
+<ul>
+  <li id="one">One</li>
+  <li id="two">Two</li>
+  <li id="three">Three</li>
+  <li id="four">Four</li>
+</ul>
+
+<button id="liststripes" type="button">Make list stripy</button>
+
+<p>Click me too</p>
+
+</body>
+</html>

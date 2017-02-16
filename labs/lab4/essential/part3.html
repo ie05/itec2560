@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Canvas</title>
+
+  <style>
+
+    #canvas {
+      border: 1px black solid;
+    }
+
+  </style>
+<!--  -->
+</head>
+<body>
+
+<!--The canvas element. Set height and width, and give it an id -->
+<canvas id="canvas" height="600" width="600"></canvas>
+<button id="start" onclick="reset()">Start</button>
+<button onclick="stop()">Stop</button>
+<script>
+
+  //Find the canvas element in this document
+  var canvas = document.getElementById("canvas");
+  // A context object will be used to draw on the canvas
+  var context = canvas.getContext("2d");
+  // set global timer
+  var offsetX = 0;
+  
+  function moveCircle(){
+  // define circle
+  context.clearRect(0, 0, 600, 600);
+  context.beginPath();
+  context.strokeStyle = "black";
+  context.style
+  // set the canvas circle 
+  var circle = context.arc(offsetX+=20,200, 50, 0, 2*Math.PI);
+  console.log(offsetX);
+  context.stroke();
+
+  }
+
+// assing global handler so clearInterval can run
+var timer;
+
+// set function to reset circle location
+function reset(){
+  // if setInterval is running, clear it
+  clearInterval(timer);
+  // reset the x value
+  offsetX = 0;
+  timer = setInterval(moveCircle,60);
+  var start = document.getElementById('start');
+  start.textContent == 'Start' ? start.textContent = 'Reset' : null;
+}
+
+// set cution to stop setInterval
+function stop(){
+  clearInterval(timer);
+  document.getElementById('start').textContent = 'Start';
+}
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 5</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<style>
+  .blueBackground{
+    background-color: #3618EA;
+  }
+</style>
+<body>
+
+<h1>JQuery Selector Practice</h1>
+
+<h2>Click on the H2 elements, like me, to give them a green background.</h2>
+
+<p>Hide me when the <span>mouse</span> hovers over me</p>
+
+<P>Hide me on mouseover too! <span>Make sure I come back</span> when the mouse moves elsewhere</P>
+
+<h1>A list of items</h1>
+
+<P>Some of these things are important, some are not</P>
+<ol>
+  <li class="not_important">First thing is not important</li>
+  <li class="not_important">Second thing is also not important</li>
+  <li>But, the third thing is <span>important</span></li>
+  <li>And so is the fourth thing.</li>
+
+</ol>
+
+<h2>Buttons</h2>
+
+<button type="button" id="h1_blue">Make H1 items blue</button>
+
+<button type="button" id="remove_not_important">Remove not important items</button>
+
+<h1>Another list</h1>
+
+<p>Make these items fade or slide away when you click them. Make sure the
+li elements in the list above don't slide away - you'll need to select only
+li elements within this unordered list. </p>
+
+<ul>
+  <li>JQuery</li>
+  <li>is</li>
+  <li>more</li>
+  <li>concise</li>
+  <li>than</li>
+  <li>plain</li>
+  <li>JavaScript</li>
+</ul>
+
+
+  <script>
+
+    $(document).ready(function(){
+      
+      // bold span tags
+      $("span").css('font-weight','bold');
+      // add gray background to h2 els
+      $('h2').on('click',function(){
+        $(this).css('background-color','#e3e3e3');
+      });
+
+      $('p').hover(function(){
+        $(this).hide('slow');
+      },function(){
+        $(this).show('slow');
+      });
+
+      $('#h1_blue').on('click',function(){
+        $('h1').toggleClass('blueBackground');
+      });
+
+      $('#remove_not_important').on('click',function(){
+        $('li.not_important').toggle();
+      });
+
+      $('ul li').on('click',function(){
+        $(this).fadeOut();
+      });
+    
+    }); // end document.ready()
+
+// When the page loads, make the <span> elements bold  
+// When the <h2> elements are clicked on, give them a green background (or another color of your choice)
+// Make the <p> elements disappear when you hover over them with the mouse. They should appear when the mouse moves away.
+// When the id="h1_blue" button is clicked, make all of the H1 elements blue. (or another color of your choice)
+// When the id="remove_not_important" button is clicked, remove the li items with class = "not_important"
+// When the items in the unordered list are clicked, make them slide away or fade out. 
+
+  </script>
+</body>
+</html>
+
+
+
