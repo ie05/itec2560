@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 6</title>
+  <link rel="stylesheet" type="text/css" href="styles2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+.not-done{
+  text-decoration: none;
+  color: red;
+  font-style: italic;
+  font-size:small;
+}
+.done{
+  text-decoration: line-through;
+  color: #07B30F;
+}
+.completed{
+  font-style: italic;
+  font-size:small;
+  text-decoration: line-through;
+  color: #07B30F;
+}
+.completed:hover{
+  cursor: pointer;
+}
+
+</style>
+</head>
+  
+<body>
+
+<form id="to-do-form" action="#" method="post">
+
+<p><label for="toDoText">To Do List Maker</label><br>
+<input id="toDoText" maxlength="80" name="toDoText" type="text" value="" required="required" placeholder="Add your to do's here" /></p>
+        
+<button id="addToDo" type="submit" value="submit">ADD TO LIST
+</button>
+
+</form>
+<p style="margin-left:20px;font-weight: bold;font-size:20px;">Your To Do List:
+  <ul id="to-do-list">
+
+  </ul>
+  
+</p>
+
+<p style="margin-left:20px;font-weight: bold;font-size:20px;">Completed List:
+  <ul id="completed-list">
+
+  </ul>
+  
+</p>
+
+<p>
+<form>
+<button id="removeTodo" type="submit" value="submit">REMOVE COMPLETED
+</button>
+
+</form>
+
+</body>
+<script type="text/javascript">
+  $(document).ready(function(){
+    // Create
+    // Read
+    // Update
+    // Delete
+     
+     // create
+     function createLi(){
+        // get input value
+        var text = document.getElementById('toDoText').value;
+        // create li el
+        var todo = document.createElement('li');
+        // create text node
+        var textNode = document.createTextNode(text);
+        // append txt to tod el
+        todo.appendChild(textNode);
+        // change todo to jquery obj
+        var $todo = $(todo);
+        // return obj
+        return $todo;
+     }
+
+     // delete
+     function removeLi(obj){
+        obj.empty();
+     }
+
+     // update
+     function addLi(todo){
+        $('#to-do-list').append(todo);
+     }
+
+     // add li el to todo list
+     $('#addToDo').on('click',function(e){
+        e.preventDefault();
+        var todo = createLi();
+        todo.append('<a href="#" class="not-done"> Not Completed</a>');
+        addLi(todo);
+        $('#toDoText').val('');
+     });
+
+     // add done and not done classes to el
+     // create complete href
+     // remove from todo list
+     // add to complted list
+     $(document).on('click','.not-done',function(e){
+        e.preventDefault();
+        $(this).parent().toggleClass('done');
+        $(this).toggleClass('done')
+        var $li = $(this).parent();
+        $li.removeClass('not-done done');
+        $li.find('a').remove('.done');
+        $li.addClass('completed');
+        $('#completed-list').append($li).hide().fadeIn('slow');
+
+     });
+
+     // remove class from completed and add todo on click
+     $(document).on('click','.completed',function(e){
+        e.preventDefault();
+        $(this).append('<a href="#" class="not-done"> Not Completed</a>');
+        var $li = $(this);
+        $li.removeClass('completed');
+        $('#to-do-list').append($li).hide().fadeIn('slow');
+
+     });
+
+     // delete all li el in the completed ul list
+      $('#removeTodo').on('click',function(e){
+        e.preventDefault();
+        var obj = $('#completed-list');
+        removeLi(obj);
+      });
+  });
+</script>
+</html>
+
