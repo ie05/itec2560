@@ -16,15 +16,12 @@ router.get('/convert',function(req,res){
 	var fromRate = exchangeRates[convertFrom];
 	var result = dollars * rate;
 	var from = dollars / fromRate;
-
-
-	// res.send('$' + dollars + ' is ' + result + convertTo);
-	res.render('results', { dollars : dollars,
-						  result : result,
-						  convertTo: convertTo,
-						  convertFrom: convertFrom,
-						  from: from,
-						  fromRate: fromRate
+	var renderResults, text1, text2;
+	text1 = '$' + dollars + ' is equivalent to ' + result + ' ' + convertTo;
+	text2 = dollars + ' ' + convertFrom + ' is equivalent to $' + from;
+	convertFrom == convertTo ? renderResults = text1 :  renderResults = text1 + ' AND ' + text2 ;
+	res.render('results', {
+						  renderResults : renderResults
 						});
 });
 
