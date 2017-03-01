@@ -12,3 +12,17 @@ body{
 #logo img {
     margin-left: -9px;
 }
+label{
+	display: block;
+}
+input,select,button{
+	margin-bottom:10px;
+	width: 173px;
+}
+select,button{
+	height: 21px;
+}
+button{
+	text-align: center;
+
+}
