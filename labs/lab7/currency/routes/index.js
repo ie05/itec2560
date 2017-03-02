@@ -19,7 +19,7 @@ router.get('/convert',function(req,res){
 	var renderResults, text1, text2;
 	text1 = '$' + dollars + ' is equivalent to ' + result + ' ' + convertTo;
 	text2 = dollars + ' ' + convertFrom + ' is equivalent to $' + from;
-	convertFrom == convertTo ? renderResults = text1 :  renderResults = text1 + ' AND ' + text2 ;
+	convertFrom == convertTo ? renderResults = text1 : renderResults = text1 + ' AND ' + text2 ;
 	res.render('results', {
 						  renderResults : renderResults
 						});
