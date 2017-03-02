@@ -4,3 +4,4 @@
 *.zip
 hidden
 projects
+node_modules
