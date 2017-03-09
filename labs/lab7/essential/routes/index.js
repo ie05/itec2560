@@ -1,26 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var request = require('request');
 
- 
-
-var exchangeRates;
-request( 'http://api.fixer.io/latest?base=USD' , function(error, response, body){
-
-    if (!error && response.statusCode == 200){
-      //Convert JSON text to a JavaScript object
-      var jsonRes = JSON.parse(body);
-      exchangeRates = jsonRes;
-      // return exchangeRates;
-    }
-
-    else {
-      //Log error info to console and return error with message.
-      console.log("Error in JSON request: " + error);
-      console.log(response);
-      console.log(body);
-    }
-  });
+var exchangeRates = {'EUR' : 0.94, 'JPY' : 112.86};
 
 
 router.get('/', function(req,res){
@@ -31,8 +12,8 @@ router.get('/convert',function(req,res){
 	var dollars = req.query.dollar_amount;
 	var convertTo = req.query.to_currency;
 	var convertFrom = req.query.from_currency;
-	var rate = exchangeRates.rates[convertTo];
-	var fromRate = exchangeRates.rates[convertFrom];
+	var rate = exchangeRates[convertTo];
+	var fromRate = exchangeRates[convertFrom];
 	var result = dollars * rate;
 	var from = dollars / fromRate;
 	var renderResults, text1, text2;
