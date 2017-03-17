@@ -34,3 +34,15 @@ db.createUser(
 )
 mongo --port 27017 -u "myUserAdmin" -p "abc123" --authenticationDatabase admin
 mongo --port 27017 -u "gardener" -p "xyz123" --authenticationDatabase garden
+
+var mongo_pw = process.env.MONGO_PW;
+var url = 'mongodb://admin:' + mongo_pw + '@localhost:27017/garden?authSource=admin';
+MongoClient.connect(url , function(err, db) {
+assert.equal(null, err);
+console.log('connected to MongoDB');
+// TODO Rest of app setup code, will go here
+// TODO make db available to routes
+});
+
+set MONGO_PW=xyz123
+export MONGO_PW=xyz123
