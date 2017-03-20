@@ -22,6 +22,11 @@ db.flowers.insertOne({"name":"Sunflower", "color":"yellow"})
 db.flowers.insertOne({"name":"Tulip", "color":"red"})
 db.flowers.insertOne({"name":"Sakura", "color":"pink"})
 
+db.flowers.insertOne({"name":"Rose", "color":"pink", "wiki":"https://en.wikipedia.org/wiki/Rose", "image":"rose.jpg"})
+
+db.flowers.insertMany([{"name":"Bluebell","color":"blue","wiki":"https://en.wikipedia.org/wiki/Hyacinthoides","image":"bluebell.jpg"},{"name":"Daisy","color":"white","wiki":"https://en.wikipedia.org/wiki/Bellis_perennis","image":"daisy.jpg"},{"name":"Sunflower","color":"yellow","wiki":"https://en.wikipedia.org/wiki/Helianthus","image":"sunflower.jpg"},{"name":"Tulip","color":"red","wiki":"https://en.wikipedia.org/wiki/Tulip","image":"tulip.jpg"},{"name":"Sakura","color":"pink","wiki":"https://en.wikipedia.org/wiki/Cherry_blossom","image":"sakura.jpg"}])
+
+
 db.createUser({ user: "myUserAdmin", pwd: "abc123", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]})
 
 use garden
@@ -32,9 +37,11 @@ db.createUser(
     roles: [ { role: "readWrite", db: "garden" } ]
   }
 )
+
+mongod --auth --dbpath C:/Users/IEHandshy/yourwebproject1/data/db
+
 mongo --port 27017 -u "myUserAdmin" -p "abc123" --authenticationDatabase admin
 mongo --port 27017 -u "gardener" -p "xyz123" --authenticationDatabase garden
-
 var mongo_pw = process.env.MONGO_PW;
 var url = 'mongodb://admin:' + mongo_pw + '@localhost:27017/garden?authSource=admin';
 MongoClient.connect(url , function(err, db) {
