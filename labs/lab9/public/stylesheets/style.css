@@ -1,8 +1,36 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+padding: 50px;
+font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a,#editableColor {
+color: #ff4c00;
+}
+a:hover,#editableColor:hover{
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#instructions {
+font-style: italic;
+}
+.button{
+	display: block;
+	width: 100px
+	height: 20px;
+	content:'Update Color';
+}
+#output{
+    background-color: #e3e3e3;
+    min-width: 500px;
+    width: auto;
+    height: auto;
+    min-height: 100px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #969696;
+}
+.error{
+	color: #FC0606;
+	font-style: italic;
 }

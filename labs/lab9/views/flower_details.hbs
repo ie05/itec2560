@@ -3,7 +3,7 @@
 {{#if flower.image}}
 	<img src="/images/{{flower.image}}">
 {{else}}
-  <p>Sorry, no image for {{flower.name}}</p>
+  <img src="/images/default-flower.png">
 {{/if}}
 
 <p>
@@ -15,5 +15,9 @@
   <a href="{{flower.wiki}}">{{flower.wiki}}</a></p>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script src="/javascripts/updatecolor.js"></script>
+<script>
+$('#change-color').validate();
+</script>
+

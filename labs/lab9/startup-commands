@@ -24,7 +24,43 @@ db.flowers.insertOne({"name":"Sakura", "color":"pink"})
 
 db.flowers.insertOne({"name":"Rose", "color":"pink", "wiki":"https://en.wikipedia.org/wiki/Rose", "image":"rose.jpg"})
 
-db.flowers.insertMany([{"name":"Bluebell","color":"blue","wiki":"https://en.wikipedia.org/wiki/Hyacinthoides","image":"bluebell.jpg"},{"name":"Daisy","color":"white","wiki":"https://en.wikipedia.org/wiki/Bellis_perennis","image":"daisy.jpg"},{"name":"Sunflower","color":"yellow","wiki":"https://en.wikipedia.org/wiki/Helianthus","image":"sunflower.jpg"},{"name":"Tulip","color":"red","wiki":"https://en.wikipedia.org/wiki/Tulip","image":"tulip.jpg"},{"name":"Sakura","color":"pink","wiki":"https://en.wikipedia.org/wiki/Cherry_blossom","image":"sakura.jpg"}])
+db.flowers.insertMany([
+{
+	"name":"Rose",
+	"color":"pink",
+	"wiki":"https://en.wikipedia.org/wiki/Rose",
+	"image":"rose.jpg"
+},
+{
+	"name":"Bluebell",
+	"color":"blue",
+	"wiki":"https://en.wikipedia.org/wiki/Hyacinthoides",
+	"image":"bluebell.jpg"
+},
+{
+	"name":"Daisy",
+	"color":"white",
+	"wiki":"https://en.wikipedia.org/wiki/Bellis_perennis",
+	"image":"daisy.jpg"
+},
+{
+	"name":"Sunflower",
+	"color":"yellow",
+	"wiki":"https://en.wikipedia.org/wiki/Helianthus",
+	"image":"sunflower.jpg"
+},
+{
+	"name":"Tulip",
+	"color":"red",
+	"wiki":"https://en.wikipedia.org/wiki/Tulip",
+	"image":"tulip.jpg"
+},
+{
+	"name":"Sakura",
+	"color":"pink",
+	"wiki":"https://en.wikipedia.org/wiki/Cherry_blossom",
+	"image":"sakura.jpg"
+}])
 
 
 db.createUser({ user: "myUserAdmin", pwd: "abc123", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]})
@@ -51,5 +87,7 @@ console.log('connected to MongoDB');
 // TODO make db available to routes
 });
 
-set MONGO_PW=xyz123
-export MONGO_PW=xyz123
+db.flowers.insertOne({"name":"Dandelion", "color":"yellow", "wiki":"https://en.wikipedia.org/wiki/Taraxacum"})
+
+	set MONGO_PW=xyz123
+	export MONGO_PW=xyz123
