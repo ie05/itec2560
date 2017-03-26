@@ -35,20 +35,24 @@ router.get('/', function(req, res, next) {
 router.get('/details/:flower', function(req, res, next){
 	req.db.collection('flowers').findOne({'name' : req.params.flower}, function(err, doc) {
 		!err ?  null : error(err); // 500 error
-		 doc ?  null : function(){return next();}; // Creates a 404 error
+		
 		return res.render('flower_details', { 'flower' : doc });
 	
 	});
 });
 
-router.post('/addFlower', function(req, res, next){
-	// req.db.collection('flowers').insertOne(req.body, function(err){
-	// 	if (err) {
-	// 		return next(err);
-	// 	}
-	// 	return res.redirect('/');
-	// });
+router.get('/delete/:flower', function(req, res, next){
+	req.db.collection('flowers').findOneAndDelete({'name' : req.params.flower}, function(err, doc) {
+		!err ?  null : error(err); // 500 error
+		
+		var testObj = JSON.stringify(req.params.flower);
 
+		return res.redirect('/');
+	
+	});
+});
+
+router.post('/addFlower', function(req, res, next){
 	req.db.collection('flowers').find({"name":req.body.name}).toArray(function (err, nameSearch){
 			!err ?  null : error(err);
 			// create testObj to output db queries to view

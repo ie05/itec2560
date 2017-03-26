@@ -17,8 +17,9 @@
 
 <ul>
 {{#each flowers}}
-	<li>
+	<li class="flower-item">
 		<a href="/details/{{this.name}}">{{this.name}}</a>
+		<span><a class="delete" href="/delete/{{this.name}}"> - delete</a></span><br>
 	</li>
 {{/each}}
 </ul>

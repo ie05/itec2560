@@ -5,6 +5,7 @@ font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 a,#editableColor {
 color: #ff4c00;
+text-decoration: none;
 }
 a:hover,#editableColor:hover{
 	font-weight: bold;
@@ -33,4 +34,12 @@ font-style: italic;
 .error{
 	color: #FC0606;
 	font-style: italic;
+}
+.delete{
+	font-style: italic;
+	font-size: smaller;
+	text-transform: uppercase;
+}
+.flower-item a{
+	line-height: 150%;
 }
