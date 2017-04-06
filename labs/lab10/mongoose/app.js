@@ -8,6 +8,7 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var flash = require('express-flash');
 var session = require('express-session');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 
@@ -20,46 +21,39 @@ app.set('view engine', 'hbs');
 // MongoDB setup
 var mongo_pw = process.env.MONGO_PW;
 var url = 'mongodb://taskmanager:' + mongo_pw + '@localhost:27017/todo?authSource=todo';
-MongoClient.connect(url, function(err, db){
 
-  console.log('Errors? ' + err);
-  assert(!err);  // Crash if error connecting
-  console.log('Connected to MongoDB');
+// setup mongoose connection
+mongoose.connect(url);
 
-  app.use(function(req, res, next){
-    req.task_col = db.collection('tasks');
-    next();
-  });
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({secret:'top secret key'}));
+app.use(flash());
 
-  app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(cookieParser());
-  app.use(session({secret:'top secret key'}));
-  app.use(flash());
+app.use(express.static(path.join(__dirname, 'public')));
 
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  app.use('/', index);
+app.use('/', index);
 
 // catch 404 and forward to error handler
-  app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-  });
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 // error handler
-  app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-  });
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-});  // End of MongoDB callback
+
 
 module.exports = app;
