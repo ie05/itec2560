@@ -1,0 +1,66 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.error_msg {
+  color:red;
+}
+
+.info_msg {
+  color: blueviolet;
+}
+
+#addtask_text {
+  width: 50%;
+}
+.navigation {
+  padding-bottom: 20px;
+}
+
+.delete_form, .done_form {
+  display: inline;
+}
+
+.done_button {
+    background-color: white;
+    border: 1px solid #e3e3e3;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 3px 5px;
+}
+.done_button:hover{
+  border:1px solid #555555;
+  font-weight: bold;
+}
+.delete_button {
+    background-color: red;
+    color: white;
+    text-transform: uppercase;
+    padding: 3px 5px;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+.delete_button:hover{
+    background-color: white;
+    color:red;
+    font-weight: bold;
+}
+.all_done_button {
+  background-color: #ffffff;
+  color: #4caf50;
+  text-transform: uppercase;
+  padding: 3px 5px;
+  border-radius: 3px;
+  border:1px solid #4caf50;
+}
+.all_done_button:hover{
+  font-weight: bold;
+}
+.alldone {
+  padding-top: 20px;
+}
