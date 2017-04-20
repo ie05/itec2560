@@ -1,6 +1,6 @@
+var apod = require('../helpers/apod');
 var express = require('express');
 var router = express.Router();
-var apod = require('../helpers/apod');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
