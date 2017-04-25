@@ -25,7 +25,6 @@ var birdSchema = new mongoose.Schema(
   datesSeen: 
   [{
     type: Date,
-    default: Date.now,
     validate: {
       validator : function(date) {
         //return false if date is in the future
