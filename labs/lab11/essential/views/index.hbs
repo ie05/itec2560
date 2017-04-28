@@ -1,0 +1,114 @@
+<h1>Bird Records</h1>
+
+<div class="addNewSighting">
+
+  <h3>Add new bird</h3>
+
+  <div class="messages">
+    {{#each messages.error}}
+      <p class="error_msg">{{this}}</p>
+    {{/each}}
+  </div>
+
+  <form action="/" method="POST">
+    Name: <input name="name" type="text" required>
+    <br>
+    Description: <input name="description" type="text">
+    <br>
+    Average Eggs Laid: <input name="averageEggsLaid" type="number" min="1" max="50">
+    <br>
+    Threatened? <input name="threatened" type="checkbox">
+    <br>
+    Nest location: <input name="nestLocation" type="text">
+    <br>
+    Nest materials: <input name="nestMaterials" type="text">
+    <br>
+    Date seen: <input name="dateSeen" type="datetime-local">
+    <br>
+    <input name="addBird" type="submit" value="Add new sighting">
+    <br>
+  </form>
+
+</div>
+
+<div class="birdsSeen">
+
+  <h3>All sightings</h3>
+
+  {{# each birds}}
+      <span>Name: {{this.name}}
+        <form style="display:inline;" action="/update" method="POST">
+          <input name="name" type="text" required>
+          <input name="_id" type="hidden" value="{{this._id}}">
+          <input name="update" type="submit" value="Update">
+        </form>
+    </span><br>
+      <span>Description: {{this.description}}
+        <form style="display:inline;" action="/update" method="POST">
+          <input name="description" type="text" required>
+          <input name="_id" type="hidden" value="{{this._id}}">
+          <input name="update" type="submit" value="Update">
+        </form>
+      </span><br>
+      <span>Average eggs laid: {{this.averageEggsLaid}}
+        <form style="display:inline;" action="/update" method="POST">
+          <input name="averageEggsLaid" type="text" required>
+          <input name="_id" type="hidden" value="{{this._id}}">
+          <input name="update" type="submit" value="Update">
+        </form>
+      </span><br>
+      
+      <span>Nest Location: {{this.nest.location}}
+         <form style="display:inline;" action="/update" method="POST">
+          <input name="location" type="text" required>
+          <input name="_id" type="hidden" value="{{this._id}}">
+          <input name="update" type="submit" value="Update">
+        </form>
+      </span><br>
+      <span>Nest materials: {{this.nest.materials}}
+        <form style="display:inline;" action="/update" method="POST">
+          <input name="materials" type="text" required>
+          <input name="_id" type="hidden" value="{{this._id}}">
+          <input name="update" type="submit" value="Update">
+        </form>
+      </span><br>
+      {{#if this.threatened}}
+        <p>This bird is threatened</p>
+      {{/if}}
+
+      <p>Dates seen:</p>
+      <ul>
+      {{#each this.datesSeen}}
+        <li>
+          {{dateFormatter this}}
+        </li>
+        <li>{{this}}</li>
+      {{else}}
+        <li>No sightings reported</li>
+      {{/each}}
+      </ul>
+
+      <p>Add new date seen</p>
+
+      <form action="/addDate" method="POST">
+        <input name="dateSeen" type="datetime-local" required>
+        <input name="_id" type="hidden" value="{{this._id}}">
+        <input name="name" type="hidden" value="{{this.name}}">
+        <input name="add" type="submit" value="Add new date">
+      </form>
+
+      <p>Clear Bird Info</p>
+      <form action="/clearData" method="POST">
+        <input name="_id" type="hidden" value="{{this._id}}">
+        <input name="name" type="hidden" value="{{this.name}}">
+        <input name="add" type="submit" value="Clear Bird Info">
+      </form>
+
+      <hr>
+
+  {{else}}
+      <p>No bird records in the database</p>
+  {{/each}}
+</div>
+
+
